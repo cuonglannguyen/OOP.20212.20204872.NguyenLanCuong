@@ -1,0 +1,10 @@
+import java.util.Arrays;
+public class SortArray {
+	public static void main(String args[]) {
+		int[] my_array1 = {1789,2035,1899,1456,2013};
+		Arrays.sort(my_array1);
+		System.out.println("The sorted numeric array is:" + Arrays.toString(my_array1));
+		
+	}
+
+}
