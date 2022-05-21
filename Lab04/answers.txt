@@ -1,0 +1,10 @@
+Quesions:If tou create a constructor method to build a DVD by title and then create a constructor method to build a DVD by category.
+Does JAVA allow you to do this?
+Answer: No. JAVA does not allow us to do this. This technique is called "constructor overloading"
+A class can have multiple constructors that differ in the number and/or type of parameters.
+However, we cannot have two constructors with the same number of parameters and same types.
+title and category have the same type "String" so it's not possible to do this.
+Question in part 10.1:
+I prefer using the latter version i.e the version when we can pass an arbitrary number of arguments.
+Because the version of array parameter requires us to pass a parameter of type array into the method, while
+the other version doesn't. We have more flexibility in passing parameters.
