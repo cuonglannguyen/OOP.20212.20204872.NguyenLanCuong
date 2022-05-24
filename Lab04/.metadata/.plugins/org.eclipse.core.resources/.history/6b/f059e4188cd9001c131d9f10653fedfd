@@ -1,0 +1,45 @@
+import java.util.Collections;
+public class DVDUtils {
+	public static String compareByCost(DigitalVideoDisc d1, DigitalVideoDisc d2){
+		String cost_compare = "The DVD "+ d1.getTitle();
+		if (d1.getCost() > d2.getCost()){
+			cost_compare += (" is more expensive than the DVD " + d2.getTitle());
+		}
+		else if(d1.getCost() == d2.getCost()) {
+			cost_compare += (" has the same price with the DVD " + d2.getTitle());
+		}
+		else {
+			cost_compare += (" is cheaper than " + d2.getTitle());
+		}
+		return cost_compare;
+		
+	};
+	public static String compareByTitle(DigitalVideoDisc d1, DigitalVideoDisc d2) {
+		int title_compare_result;
+		String title_compare;
+		title_compare_result = d1.getTitle().compareTo(d2.getTitle());
+		if (title_compare_result < 0) {
+			title_compare = "The DVD "+ d1.getTitle() + " comes before" + " The DVD "+ d2.getTitle();
+			}
+		else if (title_compare_result == 0) {
+			title_compare = "The DVD "+ d1.getTitle() + " is equal to" + " The DVD "+ d2.getTitle();
+
+		}
+		else {
+			title_compare = "The DVD "+ d1.getTitle() + " comes after" + " The DVD "+ d2.getTitle();
+
+		}
+		return title_compare;
+		
+	}
+	/*public static sortByTitle(DigitalVideoDisc [] dvdList) {
+		return Collections.sort(dvdList, 
+                (o1, o2) -> o1.getTitle().compareTo(o2.getTitle()));
+		
+		
+	}*/
+		
+		
+	
+
+}
