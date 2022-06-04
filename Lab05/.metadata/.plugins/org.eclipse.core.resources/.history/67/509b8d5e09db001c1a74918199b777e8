@@ -1,0 +1,9 @@
+package hust.soict.dsai.lab01;
+
+public class Snippet {
+	public static void main(String[] args) {
+		inputBytes = Files.readAllBytes(Paths.get(filename));
+		
+	}
+}
+

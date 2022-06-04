@@ -1,0 +1,43 @@
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+
+public class Store {
+	public static final int MAX_NUMBERS_ORDERED = 20;
+	public DigitalVideoDisc itemsinStore[] = 
+			new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+	
+	private int itemsStore = 0;
+	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
+		if (itemsStore < MAX_NUMBERS_ORDERED) {
+			this.itemsinStore[itemsStore] = disc;
+			this.itemsStore += 1;
+			System.out.println("The disc has been added!");
+					
+		}
+		else {
+			System.out.println("The cart is already full!");
+		}
+		
+	}
+	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
+		for (int i = 0; i < itemsStore; i+= 1) {
+			if (itemsinStore[i].getId() == disc.getId()) {
+				
+				for (int j = i + 1; j< itemsStore; j += 1) {
+					itemsinStore [j-1] = itemsinStore[j];
+					
+				}
+				itemsStore -= 1;
+				itemsinStore[itemsStore] = null;
+				
+				System.out.println("The disc has been removed! ");
+			
+			}
+			
+		}
+		
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,30 @@
+import java.util.Collections;
+public class DVDUtils {
+	public static String compareByCost(DigitalVideoDisc d1, DigitalVideoDisc d2){
+		String result = "The DVD"+ d1.getTitle();
+		if (d1.getCost() > d2.getCost()){
+			result += ("is more expensive than the DVD" + d2.getTitle());
+		}
+		else if(d1.getCost() == d2.getCost()) {
+			result += ("has the same price with the DVD" + d2.getTitle());
+		}
+		else {
+			result += ("is cheaper than" + d2.getTitle());
+		}
+		return result;
+		
+	};
+	public static void compareByTitle(DigitalVideoDisc d1, DigitalVideoDisc d2) {
+		
+	}
+	public static sortByTitle(DigitalVideoDisc [] dvdList) {
+		return Collections.sort(dvdList, 
+                (o1, o2) -> o1.getTitle().compareTo(o2.getTitle()));
+		
+		
+	}
+		
+		
+	
+
+}

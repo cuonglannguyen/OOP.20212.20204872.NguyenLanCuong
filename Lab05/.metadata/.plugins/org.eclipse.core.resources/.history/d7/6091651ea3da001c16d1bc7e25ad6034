@@ -1,0 +1,22 @@
+Answering the questions in exercise 6.1:
+1.If Users choose cancel, the pop-up window has shown the message:
+"You've chosen: No".
+2.If we want to customize the options for the users, we can use the JOptionPane.showOptionDialog
+with the documentation is JOptionPane.showOptionDialog(parentComponent, message, title, optionType, messageType, icon, options, initialValue).
+Here, we can create an array of options customized by the user corresponding to the parameter "options" in the documentation of showOptionDialog.
+For example, we can initialize:
+import javax.swing.JOptionPane;
+
+public class test_for_answering {
+  public static void main(String args[] ){
+    Object[] options = { "I do", "I don't" };
+    JOptionPane.showOptionDialog(null, "Are you sure?", "Warning",
+    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+    null, options,options[0]);
+    System.exit(0);
+    //JOptionPane.showOptionDialog(parentComponent, message, title, optionType, messageType, icon, options, initialValue)
+} 
+
+  }
+The above code will initialize a window with 2 options "I do", and "I don't". As we can see, the number and content of options can be customized by changing the "options" array.
+This array can also take the value input by the user.
