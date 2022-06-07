@@ -1,0 +1,2 @@
+Questions: Which classes are aggregates of other classes?
+ANswer: Compact Disc is aggregate of Track
