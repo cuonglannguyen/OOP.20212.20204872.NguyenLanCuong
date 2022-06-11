@@ -1,0 +1,187 @@
+package hust.soict.dsai.aims.cart;
+import java.util.ArrayList;
+
+import java.util.Comparator;
+import java.util.List;
+import hust.soict.dsai.aims.media.Media;
+
+import java.util.Collections;
+public class Cart {
+	public static final int MAX_NUMBERS_ORDERED = 20;
+	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	public static int getMaxNumbersOrdered() {
+		return MAX_NUMBERS_ORDERED;
+	}
+	public void addMedia(Media media) {
+		if (itemsOrdered.contains(media) == false) {
+		itemsOrdered.add(media);}
+		else {
+			System.out.println("The media has been in the list already!");
+			
+		}
+	}
+	public void removeMedia(Media media) {
+		if(itemsOrdered.contains(media) == false) {
+			System.out.println("The media is not found.");
+		}
+		else {
+			itemsOrdered.remove(media);
+		}
+		
+	}
+		
+	public float totalCost() {
+		float sum = 0;
+		if (itemsOrdered.size() <5){
+			for (int i = 0; i< itemsOrdered.size(); i++)
+			sum += itemsOrdered.get(i).getCost();
+
+		}
+		else {
+		for (int i = 0; i< itemsOrdered.size(); i++) {
+			sum += itemsOrdered.get(i).getCost();
+			sum -= this.getALuckyItem().getCost();
+					
+		}
+		return sum;
+		}
+	}
+public Media[] CartsortByCost() {
+		for (int i = 0; i < qtyOrdered; i++)  
+        {  
+            int index = i;  
+            for (int j = i + 1; j < qtyOrdered; j++){  
+                if (itemsOrdered[j].getCost()< itemsOrdered[index].getCost()){  
+                    index = j;//searching for lowest index  
+                }  
+            }  
+            Media tmp= itemsOrdered[index];   
+            itemsOrdered[index] = itemsOrdered[i];  
+            itemsOrdered[i] = tmp;
+        }
+        return itemsOrdered;
+	}
+	public Media[] CartsortByTitle() {
+		 for (int i = 0; i < qtyOrdered ; i++)  
+	        {  
+	            int index = i;  
+	            for (int j = i + 1; j < qtyOrdered; j++){  
+	                if (itemsOrdered[j].getTitle().compareTo(itemsOrdered[index].getTitle())< 0){  
+	                    index = j;//searching for lowest index  
+	                }  
+	            }  
+	            Media tmp= itemsOrdered[index];   
+	            itemsOrdered[index] = itemsOrdered[i];  
+	            itemsOrdered[i] = tmp;
+	        }
+	        return itemsOrdered;
+	}
+	public void SearchforDVD(int id) {
+		boolean found = false;
+		for (int i = 0; i <qtyOrdered; i++) {
+			if (itemsOrdered[i].getId() == id) {
+				found = true;
+				System.out.println("DVD- " +itemsOrdered[i].getTitle()+ " - "+ itemsOrdered[i].getCategory() + " - "+itemsOrdered[i].getDirector()+" - " + itemsOrdered[i].getLength()+": " + itemsOrdered[i].getCost()+"$");
+			}
+				
+		}
+		if (found == false) {
+			System.out.println("DVD not found.");
+			
+		}
+	}
+	public void SearchforDVDbytitle(String title) {
+		boolean found = false;
+		for (int i = 0; i <qtyOrdered; i++) {
+			if (itemsOrdered[i].getTitle().equals(title) == true) {
+				found = true;
+				System.out.println("DVD- " +itemsOrdered[i].getTitle()+ " - "+ itemsOrdered[i].getCategory() + " - "+itemsOrdered[i].getDirector()+" - " + itemsOrdered[i].getLength()+": " + itemsOrdered[i].getCost()+"$");
+			}
+				
+		}
+		if (found == false) {
+			System.out.println("DVD not found.");
+			
+		}
+	}
+	
+	 Comparator<Media> compare 
+	 = Comparator.comparing(Media::getTitle)
+	            .thenComparing(Comparator.comparingDouble(Media::getCost).reversed())
+	            .thenComparing(Comparator.comparingInt(Media::getLength).reversed());
+	 Comparator<Media> comparebyTitle 
+	 = Comparator.comparing(Media::getTitle)
+	            .thenComparing(Comparator.comparingDouble(Media::getCost).reversed());
+	 Comparator<Media> comparebyCost 
+	 = Comparator.comparingDouble(Media::getCost).reversed()
+	            .thenComparing(Comparator.comparing(Media::getTitle));
+	 
+	 
+	public void print() {
+		List<Media> listDVD = new ArrayList<Media>();
+		for (int i = 0; i< itemsOrdered.size(); i++) {
+			listDVD.add(itemsOrdered.get(i));
+		}
+		listDVD.sort(compare);
+		Media[] arr = listDVD.toArray(new Media[0]);
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		for (int i = 1; i <itemsOrdered.size() +1; i++) {
+			System.out.println( "DVD - " +arr[i-1].getTitle()+ " - "+ arr[i-1].getCategory() + " - "+arr[i-1].getDirector()+" - " + arr[i-1].getLength()+": " + arr[i-1].getCost()+"$");
+		}
+			System.out.println("Total cost:" +this.totalCost());
+		System.out.println("***************************************************");
+		
+		
+		
+	}//Use for AIMS//
+	public void sortByTitle() {
+		List<Media> listDVD = new ArrayList<Media>();
+		for (int i = 0; i< itemsOrdered.size(); i++) {
+			listDVD.add(itemsOrdered.get(i));
+		}
+		listDVD.sort(comparebyTitle);
+		Media[] arr = listDVD.toArray(new Media[0]);
+		System.out.println("Sort by title");
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		for (int i = 1; i <itemsOrdered.size() +1; i++) {
+			System.out.println( "DVD - " +arr[i-1].getTitle()+ " - "+ arr[i-1].getCategory() + " - "+arr[i-1].getDirector()+" - " + arr[i-1].getLength()+": " + arr[i-1].getCost()+"$");
+		}
+			System.out.println("Total cost:" +this.totalCost());
+		System.out.println("***************************************************");
+		
+		
+		
+		
+	}
+	public Media SearchforDVDforcart(String title) {
+		
+		Media foundDVD = null;
+		for (int i = 0; i <itemsOrdered.size(); i++) {
+			if (itemsOrdered.get(i).getTitle().equals(title) == true) {
+				foundDVD = itemsOrdered.get(i);
+				
+			}
+				
+		}
+		return foundDVD;
+		//Use for implementation in Aims//
+			
+		}
+	Media getALuckyItem() {
+
+		if (itemsOrdered.size() <5) {
+			System.out.println("Not enough media to pick a lucky item.");
+			
+		}
+		else {
+			int index = (int) ((Math.random() * (itemsOrdered.size()-1)));
+			Media result = itemsOrdered.get(index);
+
+			itemsOrdered.get(index).play();
+			return itemsOrdered.get(index);
+		}
+	}
+	
+}

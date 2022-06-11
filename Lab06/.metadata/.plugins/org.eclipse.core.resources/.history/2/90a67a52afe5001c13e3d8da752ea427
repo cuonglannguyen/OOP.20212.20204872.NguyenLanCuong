@@ -1,0 +1,9 @@
+package MemoryDaemon;
+
+public class MemoryDaemon {
+
+	public MemoryDaemon() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
