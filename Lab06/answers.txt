@@ -1,2 +1,2 @@
-Questions: Which method(s) do you need to implement from Comparable Interface?
+Question:Which method do you need to implement from Comparable interface?
 Answer: compareTo method with return type int.

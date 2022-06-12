@@ -1,0 +1,18 @@
+package MemoryDaemon;
+
+public class MemoryDaemon implements Runnable{
+	public void run() {
+		Runtime rt = Runtime.getRuntime();
+		long used;
+		
+		while (true) {
+			used = rt.totalMemory() - rt.freeMemory();
+			if(used != memoryUsed) {
+				System.out.println("\tMemory used = " + used);
+				long memoryUsed = used;
+			}
+		}
+	}
+
+
+}
