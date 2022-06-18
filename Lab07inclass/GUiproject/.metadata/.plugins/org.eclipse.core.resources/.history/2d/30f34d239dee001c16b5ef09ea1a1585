@@ -1,0 +1,9 @@
+package hust.soict.dsai.swing;
+
+public class LookAndFeelDemo {
+
+	public LookAndFeelDemo() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
